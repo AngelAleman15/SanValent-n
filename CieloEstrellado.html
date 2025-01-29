@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta a mi meme</title>
+    <style>
+        *, *::after, *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --dark-color: #000;
+        }
+        html, body {
+            overflow: hidden;
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: var(--dark-color);
+            overflow: hidden;
+            position: relative;
+        }
+        #starry-sky {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom, #1e2837 0%, #020510 100%);
+            z-index: -2;
+        }
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+            transition: transform 0.3s ease-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .titulo {
+            margin-bottom: 50px;
+            color: yellow;
+            font-size: 3vh;
+            opacity: 0;
+            animation: fadeIn 4s ease-in-out forwards;
+            text-align: center;
+            z-index: 1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .botones {
+            display: flex;
+            gap: 20px;
+        }
+        .boton {
+            background-color: yellow;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: black;
+        }
+        .boton:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="starry-sky"></div>
+    <h1 class="titulo">¿Me darías el honor de ser tu San Valentín este año<br> y todos los demás próximos?🧡💐</h1>
+    <div class="botones">
+        <a href="Flores.html" class="boton">Sí</a>
+        <a href="Flores.html" class="boton">Obviamente sí</a>
+    </div>
+    <script>
+        const sky = document.getElementById('starry-sky');
+        function createStarryBackground() {
+            const numStars = 500;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                star.style.width = `${Math.random() * 2}px`;
+                star.style.height = star.style.width;
+                star.style.left = `${x}px`;
+                star.style.top = `${y}px`;
+                star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                star.style.animationDelay = `-${Math.random() * 3}s`;
+                sky.appendChild(star);
+            }
+        }
+        createStarryBackground();
+    </script>
+</body>
+</html>

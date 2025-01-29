@@ -1,0 +1,54 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#starry-sky {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1e2837 0%, #020510 100%);
+    z-index: -2;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle linear infinite;
+    transition: transform 0.3s ease-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.titulo {
+    margin-bottom: 180px;
+    color: yellow;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    font-size: 3vh;
+    opacity: 0;
+    animation: fadeIn 4s ease-in-out forwards;
+    text-align: center;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.flowers {
+    position: relative;
+    z-index: 0;
+    transform: scale(0.9);
+}
